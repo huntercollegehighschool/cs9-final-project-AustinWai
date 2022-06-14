@@ -1,1 +1,2 @@
 #Use of this page is optional. If you use code here, make sure either import page1 or from page1 import * appear on your main.py page.
+words = ['blast', 'harsh', 'outlet', 'monkey', 'word', 'person', 'vacuum', 'singer', 'acute', 'sketch', 'nail', 'shower', 'bacon', 'urge', 'coma', 'pillow', 'linear', 'money', 'handy', 'chance', 'breeze', 'patrol', 'cattle', 'fairy', 'asylum', 'death', 'gossip', 'bring', 'sand', 'fraud', 'trial', 'horror', 'inject', 'exempt', 'dress']
