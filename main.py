@@ -72,6 +72,7 @@ HANGMAN_PICS = ['''
 def selectRandomWord(wordList):
    wordIndex = random.randint(0, len(wordList) - 1)
    return wordList[wordIndex]
+#Selects a random word from my word list.
 
 def screen(missedLetters, correctLetters, mysteryWord):
   print(HANGMAN_PICS[len(missedLetters)])
@@ -90,6 +91,7 @@ def screen(missedLetters, correctLetters, mysteryWord):
   for letter in blanks:
     print(letter, end=' ')
   print()
+#Controls visual display (Hangman image, blanks, letters, etc.)
 
 def Guess(alreadyGuessed):
   while True:
@@ -104,10 +106,12 @@ def Guess(alreadyGuessed):
        print('Please enter a LETTER.')
     else:
        return guess
+#Returns the letter that the player entered. Also ensures that the player enters letters only, and only one letter at a time.
       
 def playAgain():
   print('Do you want to play again? (yes or no)')
   return input().lower().startswith('y')
+#If the player wants to play again, this function returns True; if the player does not want to play again, it returns False.
 
 print('Welcome to Hangman. You will have 6 chances to guess the mystery word, one at a time. You may only enter letters; numbers and special characters are not allowed. Good luck!')
 missedLetters = ''
@@ -117,9 +121,13 @@ gameIsDone = False
 
 while True:
   screen(missedLetters, correctLetters, mysteryWord)
+#Allows the player to enter a letter.
+  
   guess = Guess(missedLetters + correctLetters)
   if guess in mysteryWord:
     correctLetters = correctLetters + guess
+#Checks if the player won the game.
+    
     foundAllLetters = True
     for i in range(len(mysteryWord)):
       if mysteryWord[i] not in correctLetters:
@@ -130,10 +138,14 @@ while True:
       gameIsDone = True
   else:
     missedLetters = missedLetters + guess
+#Checks if the player lost.
+
     if len(missedLetters) == len(HANGMAN_PICS) - 1:
       screen(missedLetters, correctLetters, mysteryWord)
       print('You have run out of guesses!\nAfter ' + str(len(missedLetters)) + ' missed guesses and ' + str(len(correctLetters)) + ' correct guesses, the word was "' + mysteryWord + '"')
       gameIsDone = True
+#Asks the player if they want to play again once the game is finished.
+      
   if gameIsDone:
     if playAgain():
       missedLetters = ''
